@@ -3,6 +3,7 @@
 #include "AppFactory.h"
 #include "ModulesApp.h"
 #include "MooseSyntax.h"
+#include "LaplaceYoung.h"
 
 template<>
 InputParameters validParams<MooseAppApp>()
@@ -45,6 +46,7 @@ extern "C" void MooseAppApp__registerObjects(Factory & factory) { MooseAppApp::r
 void
 MooseAppApp::registerObjects(Factory & factory)
 {
+	registerKernel(LaplaceYoung);  // <- registration
 }
 
 // External entry point for dynamic syntax association
