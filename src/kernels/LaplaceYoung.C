@@ -20,7 +20,9 @@ LaplaceYoung::~LaplaceYoung()
 Real
 LaplaceYoung::computeQpResidual()
 {
-  return _grad_u[_qp] * _grad_test[_i][_qp];
+  Real k =1. / std::sqrt(1+std::abs(_grad_u[_qp]*_grad_u[_qp]));
+  Real kappa = 1.0;
+  return k*_grad_u[_qp] * _grad_test[_i][_qp]+ kappa*_u[_qp]*_test[_i][_qp];
 }
 
 Real
